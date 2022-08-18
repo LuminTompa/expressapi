@@ -1,0 +1,16 @@
+### Hämta alla spel
+
+GET http://localhost:3000/api/games
+
+
+### Lägg till ett nytt spel
+
+POST http://localhost:3000/api/games
+
+### Ändra information på ett spel
+
+PUT http://localhost:3000/api/games/2
+
+### Ta bort ett spel
+
+DELETE http://localhost:3000/api/games/3

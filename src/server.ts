@@ -17,7 +17,7 @@ app.put("/api/games/:id", (req, res) => {
 });
 
 app.delete("/api/games/:id", (req, res) => {
-  res.status(204).json({});
+  res.status(204).json(null);
 });
 
 app.listen(3000, () => {
