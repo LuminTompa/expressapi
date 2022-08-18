@@ -15,5 +15,5 @@ För att starta projektet så bör man först,
 3. Datan som API:et hanterar sparas lokalt i serverfilen []
 4. APIét ska svara med 404 om datan saknas. []
 5. Git & GitHub har använts []
-6. Projektmappen innehåller en README.md fil - (läs ovan för mer info) []
+6. Projektmappen innehåller en README.md fil [X]
 7. Uppgiften lämnas in i tid! []
