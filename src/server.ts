@@ -9,6 +9,7 @@ interface Game {
   genre: string;
   rating: string;
 }
+
 const app = express();
 
 app.use(express.json());
@@ -41,11 +42,6 @@ app.get("/api/games/addtesttolib", (_, res) => {
   }
 });
 
-app.post("/api/games", (req, res) => {
-  gamesLib.push(req.body);
-  res.status(201).json(req.body);
-});
-
 app.get("/api/games/:id", (req, res) => {
   let game = gamesLib.find((g) => g.id === req.params.id);
 
@@ -54,6 +50,23 @@ app.get("/api/games/:id", (req, res) => {
   } else {
     res.status(200).json(game);
   }
+});
+
+app.post("/api/games", (req, res) => {
+  gamesLib.push(req.body);
+  res.status(201).json(req.body);
+});
+
+app.put("/api/games/:id", (req, res) => {
+  gamesLib.forEach((g) => {
+    if (g.id === req.params.id) {
+      g.title = req.body.title;
+      g.releaseDate = req.body.releaseDate;
+      g.genre = req.body.genre;
+      g.rating = req.body.rating;
+      res.status(200).json(g);
+    }
+  });
 });
 
 app.delete("/api/games/:id", (req, res) => {
