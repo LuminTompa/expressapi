@@ -23,7 +23,7 @@ För att starta projektet så bör man först,
 
 **_ VG KRAV _**
 
-1. Alla punkter för godkänt är uppfyllda []
+1. Alla punkter för godkänt är uppfyllda [X]
 2. All data skall vara sparad i en JSON-fil istället för i serverfilen []
 3. Datan i JSON-filen skall uppdateras då något läggs till, uppdateras eller tas bort []
 4. Ett klient-gränssnitt skall byggas för att anropa API:ets alla olika endpoints och
