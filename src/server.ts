@@ -52,8 +52,8 @@ app.get("/api/games/addtesttolib", (_, res) => {
   }
 });
 
-app.get("/api/games/:id", (req, res) => {
-  let game = gamesLib.find((g) => g.id === req.params.id);
+app.get("/api/games/:id", async (req, res) => {
+  let game = await gamesLib.find((g) => g.id === req.params.id);
 
   if (game === undefined) {
     res.status(404).json("A game does not exist with that id");
