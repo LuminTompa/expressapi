@@ -20,3 +20,12 @@ För att starta projektet så bör man först,
 5. Git & GitHub har använts [X]
 6. Projektmappen innehåller en README.md fil [X]
 7. Uppgiften lämnas in i tid! [X]
+
+**_ VG KRAV _**
+
+1. Alla punkter för godkänt är uppfyllda []
+2. All data skall vara sparad i en JSON-fil istället för i serverfilen []
+3. Datan i JSON-filen skall uppdateras då något läggs till, uppdateras eller tas bort []
+4. Ett klient-gränssnitt skall byggas för att anropa API:ets alla olika endpoints och
+   presentera datan, redigeringsformulär skall fyllas i med befintlig information. []
+5. Ytterligare en GET endpoint skall läggas till där det går att hämta ett specifikt objekt []
