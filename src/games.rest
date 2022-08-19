@@ -23,7 +23,7 @@ Content-Type: application/json
 
 ### Ändra information på ett spel
 
-PUT http://localhost:3000/api/games/2
+PUT http://localhost:3000/api/games/5
 
 ### Ta bort ett spel
 

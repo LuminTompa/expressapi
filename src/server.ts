@@ -19,7 +19,11 @@ app.get("/api/games", (_, res) => {
 
 app.get("/api/games/addtesttolib", (_, res) => {
   if (gamesLib.length > 0) {
-    res.status(403).json({ gamesLib: "not empty" });
+    res
+      .status(403)
+      .json(
+        "The game library is not empty, therefore test data won't be added"
+      );
   } else {
     for (let i = 0; i < 5; i++) {
       let game: Game = {
@@ -42,7 +46,13 @@ app.post("/api/games", (req, res) => {
 });
 
 app.put("/api/games/:id", (req, res) => {
-  res.status(200).json({});
+  let game = gamesLib.find((g) => g.id === req.params.id);
+
+  if (game === undefined) {
+    res.status(404).json("A game does not exist with that id");
+  } else {
+    res.status(200).json(game);
+  }
 });
 
 app.delete("/api/games/:id", (req, res) => {
