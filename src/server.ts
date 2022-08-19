@@ -15,10 +15,11 @@ const app = express();
 app.use(express.json());
 
 app.get("/api/games", (_, res) => {
-  if (gamesLib.length > 0) {
-    res.status(200).json("The library is empty");
+  if (gamesLib.length <= 0) {
+    res.status(404).json("The library is empty");
+  } else {
+    res.status(200).json(gamesLib);
   }
-  res.status(200).json(gamesLib);
 });
 
 // TODO: Ta bort nedan enpoint innan detta går i produktion
