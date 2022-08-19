@@ -17,6 +17,7 @@ app.get("/api/games", (_, res) => {
   res.status(200).json(gamesLib);
 });
 
+// TODO: Ta bort nedan enpoint innan detta går i produktion
 app.get("/api/games/addtesttolib", (_, res) => {
   if (gamesLib.length > 0) {
     res
@@ -45,7 +46,7 @@ app.post("/api/games", (req, res) => {
   res.status(201).json(req.body);
 });
 
-app.put("/api/games/:id", (req, res) => {
+app.get("/api/games/:id", (req, res) => {
   let game = gamesLib.find((g) => g.id === req.params.id);
 
   if (game === undefined) {

@@ -21,9 +21,9 @@ Content-Type: application/json
     "rating": "M"
 }
 
-### Ändra information på ett spel
+### Hämta ett spel med id
 
-PUT http://localhost:3000/api/games/5
+GET http://localhost:3000/api/games/5
 
 ### Ta bort ett spel
 
