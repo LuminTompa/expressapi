@@ -4,7 +4,7 @@ School assignment
 
 Express API Kontaktbok
 
-Detta enklare REST API hanterar kontakter i en kontaktlista.
+Detta enklare REST API hanterar en lista av spel-objekt.
 
 För att starta projektet så bör man först,
 
