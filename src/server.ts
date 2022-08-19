@@ -15,6 +15,9 @@ const app = express();
 app.use(express.json());
 
 app.get("/api/games", (_, res) => {
+  if (gamesLib.length > 0) {
+    res.status(200).json("The library is empty");
+  }
   res.status(200).json(gamesLib);
 });
 
