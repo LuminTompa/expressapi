@@ -1,20 +1,16 @@
 ### Hämta alla spel
-
 GET http://localhost:3000/api/games
 
 
 ### Lägg till testdata
-
 GET http://localhost:3000/api/games/addtesttolib
 
 
 ### Hämta ett spel med ett id
-
 GET http://localhost:3000/api/games/5
 
 
 ### Lägg till ett nytt spel
-
 POST http://localhost:3000/api/games
 Content-Type: application/json
 
@@ -27,7 +23,6 @@ Content-Type: application/json
 
 
 ### Ändra informationen i ett spel
-
 PUT http://localhost:3000/api/games/4
 Content-Type: application/json
 
@@ -40,5 +35,4 @@ Content-Type: application/json
 
 
 ### Ta bort ett spel
-
 DELETE http://localhost:3000/api/games/4

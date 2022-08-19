@@ -18,6 +18,12 @@ app.get("/api/games", (_, res) => {
   if (gamesLib.length <= 0) {
     res.status(404).json("The library is empty");
   } else {
+    gamesLib.sort((g1, g2) => {
+      if (g1.id < g2.id) return -1;
+      if (g1.id > g2.id) return 1;
+      return 0;
+    });
+
     res.status(200).json(gamesLib);
   }
 });
@@ -58,14 +64,18 @@ app.get("/api/games/:id", (req, res) => {
 
 app.post("/api/games", (req, res) => {
   // TODO: Lägga till validering
+  let idOfNewGame = new Date().getMilliseconds() * 1282565121024;
+
   let newGame: Game = {
-    id: "123",
+    id: idOfNewGame.toString(),
     title: `${req.body.title}`,
     releaseDate: req.body.releaseDate,
     genre: `${req.body.genre}`,
     rating: `${req.body.rating}`,
   };
+
   gamesLib.push(newGame);
+
   res.status(201).json(newGame);
 });
 
