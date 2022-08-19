@@ -19,9 +19,8 @@ POST http://localhost:3000/api/games
 Content-Type: application/json
 
 {
-    "id": "2",
-    "title": "TomÄrKung",
-    "releaseDate": "2017",
+    "title": "TomIsTheKing",
+    "releaseDate": "2022",
     "genre": "Action",
     "rating": "M"
 }
@@ -29,7 +28,7 @@ Content-Type: application/json
 
 ### Ändra informationen i ett spel
 
-PUT http://localhost:3000/api/games/1
+PUT http://localhost:3000/api/games/4
 Content-Type: application/json
 
 {

@@ -22,7 +22,7 @@ app.get("/api/games", (_, res) => {
   }
 });
 
-// TODO: Ta bort nedan enpoint innan detta går i produktion
+// TODO: Ta bort nedan endpoint innan detta går i produktion
 app.get("/api/games/addtesttolib", (_, res) => {
   if (gamesLib.length > 0) {
     res
@@ -57,20 +57,32 @@ app.get("/api/games/:id", (req, res) => {
 });
 
 app.post("/api/games", (req, res) => {
-  gamesLib.push(req.body);
-  res.status(201).json(req.body);
+  // TODO: Lägga till validering
+  let newGame: Game = {
+    id: "123",
+    title: `${req.body.title}`,
+    releaseDate: req.body.releaseDate,
+    genre: `${req.body.genre}`,
+    rating: `${req.body.rating}`,
+  };
+  gamesLib.push(newGame);
+  res.status(201).json(newGame);
 });
 
 app.put("/api/games/:id", (req, res) => {
-  gamesLib.forEach((g) => {
-    if (g.id === req.params.id) {
-      g.title = req.body.title;
-      g.releaseDate = req.body.releaseDate;
-      g.genre = req.body.genre;
-      g.rating = req.body.rating;
-      res.status(200).json(g);
-    }
-  });
+  if (gamesLib.some((g) => g.id === req.params.id)) {
+    gamesLib.forEach((g) => {
+      if (g.id === req.params.id) {
+        g.title = req.body.title;
+        g.releaseDate = req.body.releaseDate;
+        g.genre = req.body.genre;
+        g.rating = req.body.rating;
+        res.status(200).json(g);
+      }
+    });
+  } else {
+    res.status(404).json("A game does not exist with that id");
+  }
 });
 
 app.delete("/api/games/:id", (req, res) => {
