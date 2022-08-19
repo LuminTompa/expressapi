@@ -6,7 +6,7 @@ import {
   deleteGameById,
   getAllGames,
   getGameById,
-} from "./resources/games/game.controller";
+} from "./resources/games/games.controller";
 
 const app = express();
 
