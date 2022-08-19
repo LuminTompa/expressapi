@@ -3,9 +3,23 @@
 GET http://localhost:3000/api/games
 
 
+### Lägg till testdata
+
+GET http://localhost:3000/api/games/addtesttolib
+
+
 ### Lägg till ett nytt spel
 
 POST http://localhost:3000/api/games
+Content-Type: application/json
+
+{
+    "id": "2",
+    "title": "TomÄrKung",
+    "releaseDate": "2017",
+    "genre": "Action",
+    "rating": "M"
+}
 
 ### Ändra information på ett spel
 

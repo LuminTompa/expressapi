@@ -1,6 +1,6 @@
 import express from "express";
 
-let gamesLib: string[] = [];
+let gamesLib: Game[] = [];
 
 interface Game {
   id: string;
@@ -9,19 +9,36 @@ interface Game {
   genre: string;
   rating: string;
 }
-
 const app = express();
 
 app.use(express.json());
 
-app.get("/api/games", (req, res) => {
-  res.status(200).json([]);
+app.get("/api/games", (_, res) => {
+  res.status(200).json(gamesLib);
 });
 
-app.get("/api/games/addtesttolib", (req, res) => {});
+app.get("/api/games/addtesttolib", (_, res) => {
+  if (gamesLib.length > 0) {
+    res.status(403).json({ gamesLib: "not empty" });
+  } else {
+    for (let i = 0; i < 5; i++) {
+      let game: Game = {
+        id: `${i}`,
+        title: `TomIsKing${i}`,
+        releaseDate: new Date(),
+        genre: "Action",
+        rating: "M",
+      };
+
+      gamesLib.push(game);
+    }
+    res.status(200).json(gamesLib);
+  }
+});
 
 app.post("/api/games", (req, res) => {
-  res.status(201).json({});
+  gamesLib.push(req.body);
+  res.status(201).json(req.body);
 });
 
 app.put("/api/games/:id", (req, res) => {
