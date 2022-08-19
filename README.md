@@ -13,7 +13,7 @@ För att starta projektet så bör man först,
 
 **_ G KRAV _**
 
-##1. Projektet innehåller minst 4 st. endpoints (GET, POST, PUT & DELETE för en resurs) [X]
+1. Projektet innehåller minst 4 st. endpoints (GET, POST, PUT & DELETE för en resurs) [X]
 2. Samtliga endpoints skall kunna nås via en REST Client fil (.rest|.http) [X]
 3. Datan som API:et hanterar sparas lokalt i serverfilen [X]
 4. APIét ska svara med 404 om datan saknas. [X]
