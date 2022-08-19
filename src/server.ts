@@ -70,7 +70,19 @@ app.put("/api/games/:id", (req, res) => {
 });
 
 app.delete("/api/games/:id", (req, res) => {
-  res.status(204).json(null);
+  let gameFoundAndDeleted: boolean = false;
+
+  gamesLib.forEach((g) => {
+    if (g.id === req.params.id) {
+      gamesLib.splice(gamesLib.indexOf(g), 1);
+
+      gameFoundAndDeleted = true;
+    }
+  });
+
+  if (!gameFoundAndDeleted)
+    res.status(404).json("A game does not exist with that id");
+  else res.status(204).json(null);
 });
 
 app.listen(3000, () => {
