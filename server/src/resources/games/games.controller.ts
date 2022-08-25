@@ -2,6 +2,8 @@ import { Request, Response } from "express";
 import { Game, gamesLib } from "./games.model";
 
 export function getAllGames(req: Request, res: Response) {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+
   if (gamesLib.length <= 0) {
     res.status(404).json("The library is empty");
   } else {
@@ -41,6 +43,8 @@ export function addTestData(req: Request, res: Response) {
 
 export async function getGameById(req: Request, res: Response) {
   let game = await gamesLib.find((g) => g.id === req.params.id);
+
+  res.setHeader("Access-Control-Allow-Origin", "*");
 
   if (game === undefined) {
     res.status(404).json("A game does not exist with that id");

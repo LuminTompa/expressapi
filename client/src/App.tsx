@@ -1,32 +1,61 @@
 import { useState } from "react";
 import "./App.css";
-import reactLogo from "./assets/react.svg";
+import { Game, gamesList } from "./gameData";
+
+const defaultGame = (): Game => ({
+  id: "",
+  title: "",
+  releaseDate: new Date(),
+  genre: "",
+  rating: "",
+});
 
 function App() {
-  const [count, setCount] = useState(0);
+  const [games, setGames] = useState(gamesList);
+
+  const fetchGames = async () => {
+    let data = await fetch("http://localhost:3000/api/games");
+    const gamesFromApi = await data.json();
+
+    setGames([...gamesFromApi]);
+  };
+
+  const handleFetchGameById = async (e: any) => {
+    e.preventDefault();
+
+    console.log(e);
+
+    let url = "http://localhost:3000/api/games/" + e.currentTarget.gameId.value;
+    let data = await fetch(url);
+    const gameFromApi = await data.json();
+
+    setGames([gameFromApi]);
+  };
 
   return (
     <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src="/vite.svg" className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+      <div className="Kort">
+        <div>
+          <button className="logo" onClick={fetchGames}>
+            Hämta spelen
+          </button>
+        </div>
+        <div>
+          <form onSubmit={handleFetchGameById}>
+            <label htmlFor="gameId">Spelets Id</label>
+            <input type="number" name="gameId" id="gameId" />
+
+            <button className="logo">Hämta ett spel med ett id</button>
+          </form>
+        </div>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
+      <div className="Spelen">
+        <ul>
+          {games.map((game) => (
+            <li key={game.id}>{game.title}</li>
+          ))}
+        </ul>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
     </div>
   );
 }
