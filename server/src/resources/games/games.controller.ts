@@ -18,6 +18,8 @@ export function getAllGames(req: Request, res: Response) {
 }
 
 export function addTestData(req: Request, res: Response) {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+
   if (gamesLib.length > 0) {
     res
       .status(403)
@@ -54,6 +56,8 @@ export async function getGameById(req: Request, res: Response) {
 }
 
 export function addNewGame(req: Request, res: Response) {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+
   // TODO: Lägga till validering
   let idOfNewGame = Math.floor(Math.random() * 999999);
 
@@ -71,6 +75,8 @@ export function addNewGame(req: Request, res: Response) {
 }
 
 export function changeGameInfo(req: Request, res: Response) {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+
   if (gamesLib.some((g) => g.id === req.params.id)) {
     gamesLib.forEach((g) => {
       if (g.id === req.params.id) {
@@ -87,6 +93,8 @@ export function changeGameInfo(req: Request, res: Response) {
 }
 
 export function deleteGameById(req: Request, res: Response) {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+
   let gameFoundAndDeleted: boolean = false;
 
   gamesLib.forEach((g) => {
