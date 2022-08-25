@@ -15,7 +15,7 @@ app.use(express.json());
 app.get("/api/games", getAllGames);
 
 // TODO: Ta bort nedan endpoint innan detta går i _Produktion_
-app.get("/api/games/addtesttolib", addTestData);
+app.get("/api/games/mockeddata", addTestData);
 
 app.get("/api/games/:id", getGameById);
 

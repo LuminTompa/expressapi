@@ -21,11 +21,7 @@ export function addTestData(req: Request, res: Response) {
   res.setHeader("Access-Control-Allow-Origin", "*");
 
   if (gamesLib.length > 0) {
-    res
-      .status(403)
-      .json(
-        "The game library is not empty, therefore test data won't be added"
-      );
+    res.status(200).json(gamesLib);
   } else {
     for (let i = 0; i < 100; i++) {
       let game: Game = {
