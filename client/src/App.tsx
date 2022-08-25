@@ -10,11 +10,13 @@ const defaultGame = (): Game => ({
   rating: "",
 });
 
+const url: string = "http://localhost:3000/api/games/";
+
 function App() {
   const [games, setGames] = useState(gamesList);
 
   const fetchGames = async () => {
-    let data = await fetch("http://localhost:3000/api/games");
+    let data = await fetch(url);
     const gamesFromApi = await data.json();
 
     setGames([...gamesFromApi]);
@@ -25,8 +27,7 @@ function App() {
 
     console.log(e);
 
-    let url = "http://localhost:3000/api/games/" + e.currentTarget.gameId.value;
-    let data = await fetch(url);
+    let data = await fetch(url + e.currentTarget.gameId.value);
     const gameFromApi = await data.json();
 
     setGames([gameFromApi]);
@@ -34,13 +35,13 @@ function App() {
 
   return (
     <div className="App">
-      <div className="Kort">
-        <div>
+      <div className="Cards">
+        <div className="Card">
           <button className="logo" onClick={fetchGames}>
             Hämta spelen
           </button>
         </div>
-        <div>
+        <div className="Card">
           <form onSubmit={handleFetchGameById}>
             <label htmlFor="gameId">Spelets Id</label>
             <input type="number" name="gameId" id="gameId" />
@@ -48,11 +49,16 @@ function App() {
             <button className="logo">Hämta ett spel med ett id</button>
           </form>
         </div>
+        <div className="Card">
+          {/* TODO: Lägg in så att man kan skapa ett nytt spel som läggs till i biblioteket */}
+        </div>
       </div>
-      <div className="Spelen">
+      <div className="Games">
         <ul>
           {games.map((game) => (
-            <li key={game.id}>{game.title}</li>
+            <li key={game.id}>
+              {game.id} - {game.title}
+            </li>
           ))}
         </ul>
       </div>

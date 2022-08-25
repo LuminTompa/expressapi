@@ -25,10 +25,10 @@ export function addTestData(req: Request, res: Response) {
         "The game library is not empty, therefore test data won't be added"
       );
   } else {
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < 100; i++) {
       let game: Game = {
-        id: `${i}`,
-        title: `TomIsKing${i}`,
+        id: Math.floor(Math.random() * 999999).toString(),
+        title: `TomIsTheRealKing`,
         releaseDate: new Date(),
         genre: "Action",
         rating: "M",
@@ -55,7 +55,7 @@ export async function getGameById(req: Request, res: Response) {
 
 export function addNewGame(req: Request, res: Response) {
   // TODO: Lägga till validering
-  let idOfNewGame = new Date().getMilliseconds();
+  let idOfNewGame = Math.floor(Math.random() * 999999);
 
   let newGame: Game = {
     id: idOfNewGame.toString(),
