@@ -6,10 +6,11 @@ Express API Kontaktbok
 
 Detta enklare REST API hanterar en lista av spel-objekt.
 
-För att starta projektet så bör man först,
+För att starta projektet så bör man först befinna sig i server-mappen,
 
 1. Bygga genom att skriva npm run build,
 2. Köra genom att skriva npm run start.
+3. ALT köra genom att skriva npm run dev.
 
 **_ G KRAV _**
 
